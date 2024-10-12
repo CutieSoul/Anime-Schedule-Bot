@@ -117,7 +117,7 @@ async def update_image() -> None:
         logger.error(f"Failed to update image: {str(e)}")
 
 async def schedule_updates() -> None:
-    """Schedule the updates every minute."""
+    """Updates the Schedule every 15 minutes."""
     scheduler = AsyncIOScheduler(timezone=timezone(TIMEZONE))
     scheduler.add_job(update_schedule, 'interval', minutes=15)
     scheduler.add_job(update_image, 'interval', hours=12)
@@ -127,7 +127,7 @@ async def schedule_updates() -> None:
 async def start(client, message):
     """Start command handler."""
     await message.reply(
-        f"💫 __Schedule is running..__ {MAIN_CHANNEL}"
+        f"💫 __Schedule is running..__"
     )
 
 async def main() -> None:
