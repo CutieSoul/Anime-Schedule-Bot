@@ -1,6 +1,6 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=Anime+Schedule+Bot)](https://git.io/typing-svg)
 
-An Anime schedule telegram bot made with the Pyrogram library. The bot fetches n maintains the anime schedules from subsplease n updates a channel with the schedule along with images.
+An Anime Schedule Telegram Bot made with the Pyrogram library. The bot fetches n maintains the anime schedules from subsplease n updates a channel with the schedule along with images.
 
 ### Features
 
