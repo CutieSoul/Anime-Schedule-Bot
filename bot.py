@@ -65,7 +65,7 @@ async def update_schedule() -> None:
             logger.warning("No schedule content found.")
             return
 
-        today_date = datetime.now(timezone(TIMEZONE))
+        utc_offset = today_date.utcoffset())
         formatted_date = today_date.strftime("%A (%d-%m-%Y)")
         last_updated_time = today_date.strftime("%I:%M %p")
 
