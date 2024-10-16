@@ -70,7 +70,7 @@ async def update_schedule() -> None:
         last_updated_time = today_date.strftime("%I:%M %p")
 
         # Calculate dynamic UTC offset
-        utc_offset = today_date.utcoffset())
+        utc_offset = today_date.utcoffset()
         offset_hours = utc_offset.total_seconds() // 3600
         offset_minutes = (utc_offset.total_seconds() % 3600) // 60
         offset_sign = '+' if offset_hours >= 0 else '-'
