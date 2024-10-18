@@ -76,10 +76,6 @@ Contributions are welcome! Feel free to open issues or submit pull requests to i
 
 - Thanks To Dan For His Awsome [Libary](https://github.com/pyrogram/pyrogram)
 
-### License
-
-This project is licensed under the MIT License
-
 ##
 
    **Star this Repo if you Liked it ⭐⭐⭐**
