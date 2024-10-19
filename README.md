@@ -51,25 +51,25 @@ Note: You can find valid timezone formats in the IANA time zone database.
 
 ### Variables
 
-* `API_ID`
+* `API_ID` :
 Your API ID from my.telegram.org
 
-* `API_HASH`
+* `API_HASH` :
 Your API HASH from my.telegram.org
 
-* `BOT_TOKEN`
+* `BOT_TOKEN` :
 Bot Token from @BotFather
 
-* `MAIN_CHANNEL`
+* `MAIN_CHANNEL` :
 Your Channel username (must start with @). This is where your bot will post schedule.
 
-* `TIMEZONE`
+* `TIMEZONE` :
 Your local timezone, formatted according to the IANA time zone database. For example, use America/New_York for Eastern Time.
 
-* `SUDO_USERS`
+* `SUDO_USERS` :
 A comma-separated list of user IDs that have administrative privileges.
 
-* `WEBHOOK`
+* `WEBHOOK` :
 Set to `True` if you are running on Koyeb. Default is `False`.
 
 
