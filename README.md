@@ -70,7 +70,7 @@ Your local timezone, formatted according to the IANA time zone database. For exa
 A comma-separated list of user IDs that have administrative privileges.
 
 * `WEBHOOK`
-Set to True if you are running on Koyeb. Default is False
+Set to `True` if you are running on Koyeb. Default is `False`.
 
 
 ### Installation
