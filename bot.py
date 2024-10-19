@@ -35,7 +35,7 @@ async def schedule_updates() -> None:
     """Schedule daily tasks."""
     scheduler = AsyncIOScheduler(timezone=timezone(TIMEZONE))
     scheduler.add_job(send_schedule, "cron", hour=0, minute=15)
-    scheduler.add_job(update_schedule, 'interval', minutes=1)
+    scheduler.add_job(update_schedule, 'interval', minutes=15)
     scheduler.start()
 
 async def main():
