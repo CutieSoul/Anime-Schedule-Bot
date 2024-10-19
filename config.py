@@ -9,5 +9,6 @@ class Config:
     API_HASH = os.environ.get("API_HASH", "")
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
     MAIN_CHANNEL = os.environ.get("MAIN_CHANNEL", "")
-    MESSAGE_ID = int(os.environ.get("MESSAGE_ID", ""))
     TIMEZONE = os.environ.get("TIMEZONE", "")
+    WEBHOOK = os.environ.get("WEBHOOK", "False").lower() == "true"
+    SUDO_USERS = list(map(int, os.environ.get("SUDO_USERS", "").split(','))) if os.environ.get("SUDO_USERS") else []
