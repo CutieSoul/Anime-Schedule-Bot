@@ -7,7 +7,7 @@ This is an Anime Schedule Telegram bot made with the Pyrogram library. The bot f
 - Fetches anime schedules and updates them every 15 minutes.
 - Posts random images from a specified directory with schedule post.
 - Each schedule post is pinned in the channel for easy access.
-- Every day at 12:15 AM, delete the old schedule post and sends a new one with the latest information is available.
+- Every day at 12:15 AM, the bot deletes the old schedule post and sends a new one with the latest information is available.
 
 
 - Manually send the schedule (Sudo users only) by command.
