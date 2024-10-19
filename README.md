@@ -10,10 +10,10 @@ This is an Anime Schedule Telegram bot made with the Pyrogram library. The bot f
 - Every day at 12:15 AM, delete the old schedule post and sends a new one with the latest information is available.
 
 
-- Manually send the schedule (Sudo users only) by command
-- Change the TimeZone for schedule fetching (Sudo users only)  by command
-- Check Status (Current TimeZone etc..)
-- Supports deployment on Koyeb
+- Manually send the schedule (Sudo users only) by command.
+- Change the TimeZone for schedule fetching (Sudo users only)  by command.
+- Check Status (Current TimeZone etc..).
+- Supports deployment on Koyeb.
 
 
 #### v1.0
@@ -94,7 +94,7 @@ Set to `True` if you are running on Koyeb. Default is `False`.
 
 4. Run the Bot in tmux.
    ```bash
-   tmux new -s schedule-bot  # Start a new tmux session named "anime-bot"
+   tmux new -s schedule-bot  # Start a new tmux session named "schedule-bot"
    python3 bot.py         # Run the bot
    ```
    - To detach from the tmux session and leave the bot running, press `Ctrl + B`, then `D`.
