@@ -144,8 +144,8 @@ async def set_timezone(client, message):
                 scheduler.remove_job(job.id)
 
             # Recreate jobs with the new timezone
-            scheduler.add_job(send_schedule, "cron", hour=19, minute=35, timezone=new_timezone)
-            scheduler.add_job(update_schedule, 'interval', minutes=1, timezone=new_timezone)
+            scheduler.add_job(send_schedule, "cron", hour=0, minute=15, timezone=new_timezone)
+            scheduler.add_job(update_schedule, 'interval', minutes=15, timezone=new_timezone)
 
             await message.reply(f"🌍 **Timezone updated to:** {TIMEZONE}")
         else:
