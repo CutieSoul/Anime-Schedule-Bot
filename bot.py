@@ -1,18 +1,14 @@
 # Do not remove credits given in this repo.
 # Importing this repo instead of forking is strictly prohibited.
-# Kindly fork and edit as you wish. Feel free to give credits to the developer.
+# Kindly fork and edit as you wish. Feel free to give credits to the developer(©️ AshinaXD).
 
 import asyncio
 import logging
 from pyrogram import idle
-from pytz import timezone
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from utils.main import app
-from utils.handlers import start_command, help_command, about_command
-from utils.schedule import send_schedule, update_schedule
-from utils.main import TIMEZONE, WEBHOOK
 from flask import Flask
-from threading import Thread
+from utils.main import app, WEBHOOK
+from utils.handlers import start_command, help_command, about_command
+from utils.schedule import schedule_updates
 
 logger = logging.getLogger(__name__)
 
@@ -30,13 +26,6 @@ async def callback_query_handler(client, callback_query):
         await about_command(client, callback_query.message)
     elif data == "start":
         await start_command(client, callback_query.message)
-
-async def schedule_updates() -> None:
-    """Schedule daily tasks."""
-    scheduler = AsyncIOScheduler(timezone=timezone(TIMEZONE))
-    scheduler.add_job(send_schedule, "cron", hour=0, minute=15)
-    scheduler.add_job(update_schedule, 'interval', minutes=15)
-    scheduler.start()
 
 async def main():
     logger.info("Checking WEBHOOK condition.")
