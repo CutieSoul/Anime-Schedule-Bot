@@ -6,6 +6,7 @@ import asyncio
 import logging
 from pyrogram import idle
 from flask import Flask
+from threading import Thread
 from utils.main import app, WEBHOOK
 from utils.handlers import start_command, help_command, about_command
 from utils.schedule import schedule_updates
