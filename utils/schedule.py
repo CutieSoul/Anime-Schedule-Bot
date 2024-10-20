@@ -1,6 +1,6 @@
 # Do not remove credits given in this repo.
 # Importing this repo instead of forking is strictly prohibited.
-# Kindly fork and edit as you wish. Feel free to give credits to the developer.
+# Kindly fork and edit as you wish. Feel free to give credits to the developer(©️ AshinaXD).
 
 import logging
 import json
@@ -8,16 +8,18 @@ from pyrogram import filters
 from datetime import datetime
 from aiohttp import ClientSession
 from pytz import timezone
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from utils.image import get_random_image
 from utils.main import app, MAIN_CHANNEL, TIMEZONE, SUDO_USERS
 
 logger = logging.getLogger(__name__)
 
 # Global variables
-current_message_id, current_sticker_id = None, None
+scheduler, current_message_id, current_sticker_id = None, None, None
 
 async def fetch_schedule():
     """Fetch today's anime schedule and format the message."""
+    global TIMEZONE
     try:
         async with ClientSession() as ses:
             schedule_url = f"https://subsplease.org/api/?f=schedule&h=true&tz={TIMEZONE}"
@@ -113,6 +115,14 @@ async def update_schedule() -> None:
     except Exception as e:
         logger.error(f"Failed to update schedule: {str(e)}")
 
+async def schedule_updates() -> None:
+    """Schedule daily tasks."""
+    global scheduler
+    scheduler = AsyncIOScheduler(timezone=timezone(TIMEZONE))
+    scheduler.add_job(send_schedule, "cron", hour=0, minute=15)
+    scheduler.add_job(update_schedule, 'interval', minutes=15)
+    scheduler.start()
+
 # Define the set_timezone command
 @app.on_message(filters.command('set_timezone') & filters.private)
 async def set_timezone(client, message):
@@ -126,6 +136,42 @@ async def set_timezone(client, message):
     if new_timezone:
         global TIMEZONE
         TIMEZONE = new_timezone
-        await message.reply(f"🌍 **Timezone updated to:** {TIMEZONE}")
+
+        global scheduler
+        if scheduler is not None:
+            # Remove existing jobs
+            for job in scheduler.get_jobs():
+                scheduler.remove_job(job.id)
+
+            # Recreate jobs with the new timezone
+            scheduler.add_job(send_schedule, "cron", hour=19, minute=35, timezone=new_timezone)
+            scheduler.add_job(update_schedule, 'interval', minutes=1, timezone=new_timezone)
+
+            await message.reply(f"🌍 **Timezone updated to:** {TIMEZONE}")
+        else:
+            await message.reply("❌ **Scheduler is not initialized. Please restart the bot.**")
     else:
         await message.reply("❌ **Please provide a valid timezone.**")
+
+# Define the status command
+@app.on_message(filters.command('status') & filters.private)
+async def status_command(client, message):
+    """Show the current status of the bot."""
+    global TIMEZONE
+    sudo_usernames = []
+
+    for user_id in SUDO_USERS:
+        user = await client.get_users(user_id)
+        if user.username:
+            sudo_usernames.append(f"[{user.first_name}](tg://user?id={user.id})")
+        else:
+            sudo_usernames.append(f"{user.first_name} (User ID: {user.id})")
+
+    status_text = (
+        "📊 **Current Status:**\n\n"
+        f"Currently Working On: {MAIN_CHANNEL}\n"
+        f"Current Timezone: {TIMEZONE}\n"
+        f"Sudo Users: {', '.join(sudo_usernames)}\n\n"
+        "✨ **All systems operational!**"
+    )
+    await message.reply(status_text)
