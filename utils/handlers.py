@@ -1,10 +1,10 @@
 # Do not remove credits given in this repo.
 # Importing this repo instead of forking is strictly prohibited.
-# Kindly fork and edit as you wish. Feel free to give credits to the developer.
+# Kindly fork and edit as you wish. Feel free to give credits to the developer(©️ AshinaXD).
 
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from utils.main import app, SUDO_USERS, MAIN_CHANNEL, TIMEZONE
+from utils.main import app, SUDO_USERS, MAIN_CHANNEL
 from utils.schedule import send_schedule
 
 WELCOME_TEXT = (
@@ -100,26 +100,3 @@ async def post_schedule(client, message):
         await app.edit_message_text(chat_id=message.chat.id, message_id=schmsg.id, text=f"✅ Successfully schedule post sent to {MAIN_CHANNEL}!")
     except Exception as e:
         await app.edit_message_text(chat_id=message.chat.id, message_id=schmsg.id, text=f"❌ **Error:** {str(e)}")
-
-# Define the status command
-@app.on_message(filters.command('status') & filters.private)
-async def status_command(client, message):
-    """Show the current status of the bot."""
-    sudo_usernames = []
-
-    # Fetch usernames for sudo users
-    for user_id in SUDO_USERS:
-        user = await client.get_users(user_id)
-        if user.username:
-            sudo_usernames.append(f"[{user.first_name}](tg://user?id={user.id})")  # Create a mention link
-        else:
-            sudo_usernames.append(f"{user.first_name} (User ID: {user.id})")  # Fallback if no username
-
-    status_text = (
-        "📊 **Current Status:**\n\n"
-        f"Currently Working On: {MAIN_CHANNEL}\n"
-        f"Current Timezone: {TIMEZONE}\n"
-        f"Sudo Users: {', '.join(sudo_usernames)}\n\n"
-        "✨ **All systems operational!**"
-    )
-    await message.reply(status_text)
