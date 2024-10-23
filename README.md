@@ -18,7 +18,7 @@ This is an Anime Schedule Telegram bot made with the Pyrogram library. The bot f
 
 #### v1.0
 - **Functionality**: Edits the scheduled message every 15 minutes.
-- **Usage**: Use [v1.0](https://github.com/AshinaXD/Anime-Schedule-Bot/tree/v1.0) if you want to edit the current scheduled message.
+- **Usage**: Use [v1.0](https://github.com/CutieSoul/Anime-Schedule-Bot/tree/v1.0) if you want to edit the current scheduled message.
 
 ### Usage
 
@@ -106,7 +106,7 @@ Set to `True` if you are running on Koyeb. Default is `False`.
 #### Deploy on Koyeb
 The fastest way to deploy the application is to click the Deploy to Koyeb button below.
 
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/AshinaXD/Anime-Schedule-Bot&env[API_ID]&env[API_HASH]&env[BOT_TOKEN]&env[WEBHOOK]=True&env[MAIN_CHANNEL]&env[TIMEZONE]&env[SUDO_USERS]&run_command=python3%20bot.py&branch=main&name=animeschedule)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/CutieSoul/Anime-Schedule-Bot&env[API_ID]&env[API_HASH]&env[BOT_TOKEN]&env[WEBHOOK]=True&env[MAIN_CHANNEL]&env[TIMEZONE]&env[SUDO_USERS]&run_command=python3%20bot.py&branch=main&name=animeschedule)
 
 
 ### Logging
