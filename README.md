@@ -45,7 +45,7 @@ Your local timezone, formatted according to the IANA time zone database. For exa
    ```bash
    sudo apt update
    sudo apt install git python3 python3-pip
-   git clone https://github.com/AshinaXD/Anime-Schedule-Bot/tree/v1.0 && cd Anime-Schedule-Bot
+   git clone https://github.com/CutieSoul/Anime-Schedule-Bot/tree/v1.0 && cd Anime-Schedule-Bot
    ```
 
 2. Configure the bot by editing `.env` with your Telegram API credentials, bot token, and other settings.
