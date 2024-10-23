@@ -79,7 +79,7 @@ Set to `True` if you are running on Koyeb. Default is `False`.
    ```bash
    sudo apt update
    sudo apt install git python3 python3-pip tmux
-   git clone https://github.com/AshinaXD/Anime-Schedule-Bot && cd Anime-Schedule-Bot
+   git clone https://github.com/CutieSoul/Anime-Schedule-Bot && cd Anime-Schedule-Bot
    ```
 
 2. Configure the bot by editing `.env` with your Telegram API credentials, bot token, and other settings.
