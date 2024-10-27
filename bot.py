@@ -6,6 +6,7 @@ import asyncio
 import logging
 from pyrogram import idle
 from pyrogram.types import BotCommand
+from pyrogram.errors import FloodWait
 from flask import Flask
 from threading import Thread
 from utils.main import app, WEBHOOK
@@ -30,30 +31,36 @@ async def callback_query_handler(client, callback_query):
         await start_command(client, callback_query.message)
 
 async def main():
-    logger.info("Checking WEBHOOK condition.")
-    logger.info(f"WEBHOOK value: {WEBHOOK}")
-    await app.start()
-    await app.set_bot_commands([
-        BotCommand("start", "Check if I'm alive"),
-        BotCommand("send ", "Manually send the schedule"),
-        BotCommand("status ", "Get the current status"),
-        BotCommand("set_timezone", " Change the timezone")])
-    await schedule_updates()
+    while True:  # Retry loop for handling FloodWait
+        try:
+            logger.info("Checking WEBHOOK condition.")
+            logger.info(f"WEBHOOK value: {WEBHOOK}")
+            await app.start()
+            await app.set_bot_commands([
+                BotCommand("start", "Check if I'm alive"),
+                BotCommand("send ", "Manually send the schedule"),
+                BotCommand("status ", "Get the current status"),
+                BotCommand("set_timezone", "Change the timezone")])
+            await schedule_updates()
 
-    if WEBHOOK:
-        logger.info("Running with Flask.")
-        flask_app = Flask(__name__)
+            if WEBHOOK:
+                logger.info("Running with Flask.")
+                flask_app = Flask(__name__)
 
-        # Start the Flask app in a separate thread
-        Thread(target=flask_app.run, kwargs={'host': '0.0.0.0', 'port': 8000}).start()
-    else:
-        logger.info("Running without Flask.")
+                # Start the Flask app in a separate thread
+                Thread(target=flask_app.run, kwargs={'host': '0.0.0.0', 'port': 8000}).start()
+            else:
+                logger.info("Running without Flask.")
 
-    logger.info("Bot started.")
+            logger.info("Bot started.")
+            await idle()
+            logger.info("Bot stopped.")
+            await app.stop()
+            break  # Exit the retry loop if successful
 
-    await idle()
-    logger.info("Bot stopped.")
-    await app.stop()
+        except FloodWait as e:
+            logger.warning(f"Flood wait for {e.x} seconds. Waiting...")
+            await asyncio.sleep(e.x)  # Wait for the specified time before retrying
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
