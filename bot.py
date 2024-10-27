@@ -5,6 +5,7 @@
 import asyncio
 import logging
 from pyrogram import idle
+from pyrogram.types import BotCommand
 from flask import Flask
 from threading import Thread
 from utils.main import app, WEBHOOK
