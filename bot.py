@@ -59,8 +59,8 @@ async def main():
             break  # Exit the retry loop if successful
 
         except FloodWait as e:
-            logger.warning(f"Flood wait for {e.x} seconds. Waiting...")
-            await asyncio.sleep(e.x)  # Wait for the specified time before retrying
+            logger.warning(f"Flood wait for {e.value} seconds. Waiting...")
+            await asyncio.sleep(e.value)  # Wait for the specified time before retrying
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
