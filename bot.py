@@ -32,7 +32,7 @@ async def main():
     logger.info("Checking WEBHOOK condition.")
     logger.info(f"WEBHOOK value: {WEBHOOK}")
     await app.start()
-    await self.set_bot_commands([
+    await app.set_bot_commands([
         BotCommand("start", "Check if I'm alive"),
         BotCommand("send ", "Manually send the schedule"),
         BotCommand("status ", "Get the current status"),
