@@ -112,16 +112,3 @@ The fastest way to deploy the application is to click the Deploy to Koyeb button
 ### Logging
 
 - The bot logs important actions to the console, which can help in debugging and monitoring its performance. You can adjust the logging level in the configuration if needed.
-
-### Contributing
-
-- Contributions are welcome! Feel free to open issues or submit pull requests to improve the bot.
-
-### Note
-
-- Do not remove credits given in this repo. Importing this repo instead of forking is strictly prohibited. Kindly fork and edit as you wish. Feel free to give credits to the developer.
-
-##
-
-<a href='https://ko-fi.com/F1F814OOCF' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-
