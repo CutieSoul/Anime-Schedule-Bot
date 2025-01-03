@@ -1,6 +1,6 @@
 # Do not remove credits given in this repo.
 # Importing this repo instead of forking is strictly prohibited.
-# Kindly fork and edit as you wish. Feel free to give credits to the developer.
+# Kindly fork and edit as you wish. Feel free to give credits to the developer(©️ CutieSoul).
 
 import os
 import random
