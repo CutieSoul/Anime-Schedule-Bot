@@ -1,6 +1,6 @@
 # Do not remove credits given in this repo.
 # Importing this repo instead of forking is strictly prohibited.
-# Kindly fork and edit as you wish. Feel free to give credits to the developer(©️ AshinaXD).
+# Kindly fork and edit as you wish. Feel free to give credits to the developer(©️ CutieSoul).
 
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -73,13 +73,13 @@ async def about_command(client, message):
     about_text = (
         "🔍 **About This Bot:**\n\n"
         "This bot fetches and maintains the anime schedules from subsplease and updates a channel with the schedule along with images.\n\n"
-        "🌀 Created by [Ashina](t.me/peaceful_wolf)!\n\n"
+        "🌀 Created by [Ashina](https://github.com/CutieSoul)!\n\n"
         "✨ **Feel free to reach out if you need assistance!**"
     )
 
     keyboard = [
         [
-            InlineKeyboardButton("Source Code", url="https://github.com/AshinaXD/Anime-Schedule-Bot"),
+            InlineKeyboardButton("Source Code", url="https://github.com/CutieSoul/Anime-Schedule-Bot"),
             InlineKeyboardButton("Back", callback_data="start")
         ]
     ]
